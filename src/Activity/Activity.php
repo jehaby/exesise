@@ -2,9 +2,18 @@
 
 namespace Jehaby\Exesise;
 
+use Jehaby\Exesise\Exercise;
+
 
 abstract class  Activity {
 
+    /**
+     * @var
+     */
+    private $exercise;
+
+
+    private $type;
 
     abstract public function start();
 
