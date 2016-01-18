@@ -10,5 +10,16 @@ Progression -- not sure if I need it here
 
 
 
+# Functionality #
 
-It could be cool web app.
+Run today's workout
+
+List of previous/next workouts
+
+List of all exercises
+
+Some funny statistics 
+* total number of all exercises done for week, month, all perios
+* total time spend on workouts
+* progress statistics
+* ... 

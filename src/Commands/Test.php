@@ -4,10 +4,19 @@
 namespace Jehaby\Exesise\Commands;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 
 class Test extends Command
 {
+
+    public function __construct()
+    {
+
+    }
+
 
     protected function configure()
     {
