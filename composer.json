@@ -2,7 +2,8 @@
     "name": "jehaby/exesise",
     "require": {
         "aura/sql": "^2.4",
-        "rdlowrey/auryn": "^1.1"
+        "rdlowrey/auryn": "^1.1",
+        "symfony/console": "^3.0"
     },
     "license": "MIT",
     "authors": [

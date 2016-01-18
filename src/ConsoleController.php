@@ -10,6 +10,13 @@ class ConsoleController
 
     }
 
+
+    public function test()
+    {
+
+
+    }
+
     
 
 }

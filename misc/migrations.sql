@@ -1,3 +1,6 @@
+PRAGMA FOREIGN_KEYS = ON;
+
+
 CREATE TABLE users(
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL UNIQUE
@@ -25,7 +28,9 @@ CREATE TABLE activities(
   id INTEGER,
   activity_type TEXT CHECK(activity_type IN ('rest', 'timed', 'repetition')) NOT NULL,
   workout_id INTEGER NOT NULL REFERENCES workouts(id),
-  number INTEGER
+  number INTEGER,
+  finished BOOLEAN,
+  PRIMARY KEY (id, activity_type)
 );
 
 
