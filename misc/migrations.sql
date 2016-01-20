@@ -59,3 +59,10 @@ CREATE TABLE repetition_activities_list(
   planned_count INTEGER NOT NULL,
   fact_count INTEGER
 );
+
+
+INSERT INTO
+  exercises(title, description)
+VALUES
+  ('push ups', 'Broad push ups'),
+  ('push ups chest width', 'Push ups with hands at chest width');
