@@ -17,6 +17,7 @@ class Test extends Command
     protected function configure()
     {
         $this
+
             ->setName('demo:greet')
             ->setDescription('Greet someone')
             ->addArgument(
@@ -35,6 +36,9 @@ class Test extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
+        var_dump($input);
+
         $name = $input->getArgument('name');
         if ($name) {
             $text = 'Hello '.$name;

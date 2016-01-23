@@ -9,7 +9,6 @@ Workout -- sequence of some number of activities with rests periods between them
 Progression -- not sure if I need it here
 
 
-
 # Functionality #
 
 Run today's workout

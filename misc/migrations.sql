@@ -9,7 +9,7 @@ CREATE TABLE users(
 
 CREATE TABLE exercises(
   id INTEGER PRIMARY KEY ,
-  title TEXT NOT NULL ,
+  title TEXT NOT NULL,
   description TEXT
 );
 
