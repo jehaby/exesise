@@ -6,6 +6,7 @@ namespace Jehaby\Exesise\Commands;
 
 use Jehaby\Exesise\Repositories\ExercisesRepository;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ListExercises extends Command
@@ -21,6 +22,7 @@ class ListExercises extends Command
      */
     public function __construct(ExercisesRepository $repository)
     {
+        parent::__construct();
         $this->repository = $repository;
     }
 
@@ -28,12 +30,12 @@ class ListExercises extends Command
     {
         $this
             ->setName('ex:list')
-            ->setAliases(['le'])
-            ->setDefinition('Outputs all exercises');
+            ->setAliases(['le']);
+        //            ->setDefinition(['Outputs all exercises']);
     }
 
 
-    public function execute(OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln();
     }
