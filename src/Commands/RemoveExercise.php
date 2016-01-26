@@ -5,6 +5,7 @@ namespace Jehaby\Exesise\Commands;
 
 
 use Aura\Sql\Exception;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Jehaby\Exesise\Repositories\ExercisesRepository;
 use Symfony\Component\Console\Input\InputArgument;
@@ -20,10 +21,16 @@ class RemoveExercise extends Command
     private $repository;
 
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
      * AddExercise constructor.
      * @param ExercisesRepository $repository
+     * @param LoggerInterface $logger
      */
-    public function __construct(ExercisesRepository $repository)
+    public function __construct(ExercisesRepository $repository, LoggerInterface $logger)
     {
         parent::__construct();
         $this->repository = $repository;
@@ -44,6 +51,7 @@ class RemoveExercise extends Command
         try {
             $this->repository->destroy($input->getArgument('id'));
         } catch (Exception $e) {
+            $this->logger->
             $output->writeln('Something went wrong');
         }
     }

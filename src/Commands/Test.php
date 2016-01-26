@@ -17,7 +17,6 @@ class Test extends Command
     protected function configure()
     {
         $this
-
             ->setName('demo:greet')
             ->setDescription('Greet someone')
             ->addArgument(

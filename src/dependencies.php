@@ -3,10 +3,26 @@
 
 $injector = new \Auryn\Injector;
 
-$injector->define(\Aura\Sql\ExtendedPdo::class, ['sqlite:storage/database.sqlite']);
-$injector->alias(\Aura\Sql\ExtendedPdoInterface::class, \Aura\Sql\ExtendedPdo::class);
-$injector->share(\Aura\Sql\ExtendedPdo::class);
 
-$injector->alias(\Symfony\Component\Console\Output\OutputInterface::class, Symfony\Component\Console\Output\ConsoleOutput::class);
+//$config = new \Doctrine\DBAL\Configuration();
+
+
+$connectionParams = [
+    'driver' => 'pdo_sqlite',
+    'path' =>  \Jehaby\Exesise\Config::getDir() . '/storage/database.sqlite',
+];
+$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams);
+
+$injector->share($conn);
+//$injector->alias(\Doctrine\DBAL\Driver\Connection::class, $conn);
+
+$injector->alias(\Symfony\Component\Console\Output\OutputInterface::class, \Symfony\Component\Console\Output\ConsoleOutput::class);
+
+$injector->define(\Monolog\Logger::class, [
+    'defaultLogger',
+    [new \Monolog\Handler\StreamHandler('storage/default.log')]
+]);
+$injector->alias(\Psr\Log\LoggerInterface::class, \Monolog\Logger::class);
+$injector->share(\Monolog\Logger::class);
 
 

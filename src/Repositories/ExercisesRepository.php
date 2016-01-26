@@ -3,22 +3,28 @@
 
 namespace Jehaby\Exesise\Repositories;
 
-
-use Aura\Sql\ExtendedPdoInterface;
+use Doctrine\DBAL\Connection;
 use Jehaby\Exesise\Exercise;
+use Psr\Log\LoggerInterface;
 
 class ExercisesRepository
 {
 
     /**
-     * @var ExtendedPdoInterface
+     * @var Connection
      */
-    private $pdo;
+    private $connection;
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
 
-    public function __construct(ExtendedPdoInterface $pdo)
+    public function __construct(Connection $connection, LoggerInterface $logger)
     {
-        $this->pdo = $pdo;
+        $this->connection = $connection;
+        $this->logger = $logger;
     }
 
     /**
@@ -28,7 +34,7 @@ class ExercisesRepository
     {
         $exercises = [];
 
-        foreach ($this->pdo->fetchAll('SELECT id, title, description FROM exercises') as $data) {
+        foreach ($this->connection->fetchAll('SELECT id, title, description FROM exercises') as $data) {
             $exercises[] = new Exercise($data['id'], $data['title'], $data['description']);
         }
 
@@ -42,9 +48,12 @@ class ExercisesRepository
      */
     public function add($title, $description)
     {
-        $this->pdo->perform(
-            'INSERT INTO exercises(title, description) VALUES (:title, :description)',
-            ['title' => $title, 'description' => $description]
+        $this->connection->insert(
+            'exercises',
+            [
+                'title' => $title,
+                'description' => $description
+            ]
         );
     }
 
@@ -53,7 +62,7 @@ class ExercisesRepository
      */
     public function destroy($id)
     {
-        $this->pdo->perform('DELETE FROM exercises WHERE id = :id', ['id' => $id]);
+        $this->connection->delete('exercises', ['id' => $id]);
     }
 
 }
