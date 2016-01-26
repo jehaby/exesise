@@ -1,11 +1,6 @@
 <?php
 
-
 $injector = new \Auryn\Injector;
-
-
-//$config = new \Doctrine\DBAL\Configuration();
-
 
 $connectionParams = [
     'driver' => 'pdo_sqlite',
@@ -14,7 +9,6 @@ $connectionParams = [
 $conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams);
 
 $injector->share($conn);
-//$injector->alias(\Doctrine\DBAL\Driver\Connection::class, $conn);
 
 $injector->alias(\Symfony\Component\Console\Output\OutputInterface::class, \Symfony\Component\Console\Output\ConsoleOutput::class);
 
