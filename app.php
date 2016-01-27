@@ -10,6 +10,7 @@ $commands = [
     \Jehaby\Exesise\Commands\ListExercises::class,
     \Jehaby\Exesise\Commands\AddExercise::class,
     \Jehaby\Exesise\Commands\RemoveExercise::class,
+    \Jehaby\Exesise\Commands\RunWorkout::class
 ];
 
 foreach ($commands as $command) {
